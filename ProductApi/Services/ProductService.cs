@@ -10,7 +10,7 @@ public class ProductService : IProductService
         _forbiddenPhraseRepository = forbiddenPhraseRepository;
         _specifications = new List<ISpecification<ProductEntity>>()
         {
-            new ProductNameSpecification(productRepository),
+            new ProductNameSpecification(),
             new ProductPriceSpecification(),
             new ProductQuantitySpecification()
         };

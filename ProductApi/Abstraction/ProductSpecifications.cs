@@ -1,12 +1,5 @@
 public class ProductNameSpecification : ISpecification<ProductEntity>
 {
-    private readonly IProductRepository _productRepository;
-
-    public ProductNameSpecification(IProductRepository productRepository)
-    {
-        _productRepository = productRepository;
-    }
-
     public string ErrorMessage => "Name of the product has to be between 3 and 20 characters and contain only letters and digits.";
 
     public bool IsSatisfiedBy(ProductEntity productEntity)
