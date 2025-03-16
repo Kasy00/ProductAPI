@@ -7,5 +7,5 @@ public class ProductHistory
     public required string NewValue { get; set; }
     public DateTime ChangeDate { get; set; }
 
-    public ProductEntity? Product { get; set; }
+    public Product? Product { get; set; }
 }

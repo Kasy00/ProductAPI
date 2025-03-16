@@ -23,7 +23,7 @@ public class ProductDbContext : DbContext
     }
 
 
-    public DbSet<ProductEntity> Products { get; set; }
+    public DbSet<Product> Products { get; set; }
     public DbSet<ForbiddenPhrase> ForbiddenPhrases { get; set; }
     public DbSet<ProductHistory> ProductsHistories { get; set; }
 

@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 
-public class ProductRepository : GenericRepository<ProductEntity>, IProductRepository
+public class ProductRepository : GenericRepository<Product>, IProductRepository
 {
     public ProductRepository(ProductDbContext context) : base(context) { }
 
@@ -18,7 +18,7 @@ public class ProductRepository : GenericRepository<ProductEntity>, IProductRepos
             .ToListAsync();
     }
 
-    public async Task TrackProductHistory(ProductEntity oldProduct, ProductEntity newProduct)
+    public async Task TrackProductHistory(Product oldProduct, Product newProduct)
     {
         var changes = new List<ProductHistory>();
 

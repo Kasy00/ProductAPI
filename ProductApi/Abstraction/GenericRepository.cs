@@ -1,3 +1,4 @@
+using System.Linq.Expressions;
 using Microsoft.EntityFrameworkCore;
 
 public class GenericRepository<T> : IGenericRepository<T> where T : class
@@ -11,9 +12,9 @@ public class GenericRepository<T> : IGenericRepository<T> where T : class
         _dbSet = context.Set<T>();
     }
 
-    public async Task<IEnumerable<T>> GetAllAsync()
+    public async Task<IEnumerable<TResult>> GetAllAsync<TResult>(Expression<Func<T, TResult>> selector)
     {
-        return await _dbSet.ToListAsync();
+        return await _dbSet.Select(selector).ToListAsync();
     }
 
     public async Task<T?> GetByIdAsync(int id)

@@ -23,7 +23,7 @@ namespace ProductApi.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
-            modelBuilder.Entity("ProductEntity", b =>
+            modelBuilder.Entity("product", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()

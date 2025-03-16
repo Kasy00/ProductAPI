@@ -41,7 +41,7 @@ namespace ProductApi.Migrations
                     b.ToTable("ForbiddenPhrases");
                 });
 
-            modelBuilder.Entity("ProductEntity", b =>
+            modelBuilder.Entity("product", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -103,7 +103,7 @@ namespace ProductApi.Migrations
 
             modelBuilder.Entity("ProductHistory", b =>
                 {
-                    b.HasOne("ProductEntity", "Product")
+                    b.HasOne("product", "Product")
                         .WithMany()
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)

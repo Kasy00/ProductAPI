@@ -40,7 +40,7 @@ namespace ProductApi.Migrations
                     b.ToTable("ForbiddenPhrases");
                 });
 
-            modelBuilder.Entity("ProductEntity", b =>
+            modelBuilder.Entity("product", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()

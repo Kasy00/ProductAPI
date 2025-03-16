@@ -42,7 +42,7 @@ public class ProductController : ControllerBase
     }
 
     [HttpPost]
-    public async Task<IActionResult> CreateProduct([FromBody] ProductEntity product)
+    public async Task<IActionResult> CreateProduct([FromBody] Product product)
     {
         try
         {
@@ -56,7 +56,7 @@ public class ProductController : ControllerBase
     }
 
     [HttpPut("{id}")]
-    public async Task<IActionResult> UpdateProduct(int id, [FromBody] ProductEntity product)
+    public async Task<IActionResult> UpdateProduct(int id, [FromBody] Product product)
     {
         try
         {

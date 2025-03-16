@@ -1,27 +1,41 @@
+using Microsoft.Extensions.Options;
+
 public class ProductService : IProductService
 {
     private readonly IProductRepository _productRepository;
     private readonly IForbiddenPhraseRepository _forbiddenPhraseRepository;
-    private readonly List<ISpecification<ProductEntity>> _specifications;
+    private readonly List<ISpecification<Product>> _specifications;
 
-    public ProductService(IProductRepository productRepository, IForbiddenPhraseRepository forbiddenPhraseRepository)
+    public ProductService(IProductRepository productRepository, IForbiddenPhraseRepository forbiddenPhraseRepository, IOptions<ProductValidationOptions> productValidationOptions)
     {
         _productRepository = productRepository;
         _forbiddenPhraseRepository = forbiddenPhraseRepository;
-        _specifications = new List<ISpecification<ProductEntity>>()
+        _specifications = new List<ISpecification<Product>>()
         {
-            new ProductNameSpecification(),
+            new ProductNameSpecification(productValidationOptions),
             new ProductPriceSpecification(),
-            new ProductQuantitySpecification()
+            new ProductQuantitySpecification(productValidationOptions)
         };
     }
 
-    public async Task<IEnumerable<ProductEntity>> GetAllProductsAsync()
+    public async Task<IEnumerable<ProductDto>> GetAllProductsAsync()
     {
-        return await _productRepository.GetAllAsync();
+        var products = await _productRepository.GetAllAsync(p => new
+        {
+            p.Id,
+            p.Name,
+            p.Price
+        });
+        
+        return products.Select(p => new ProductDto
+        {
+            Id = p.Id,
+            Name = p.Name,
+            Price = p.Price
+        });
     }
 
-    public async Task<ProductEntity?> GetProductByIdAsync(int id)
+    public async Task<Product?> GetProductByIdAsync(int id)
     {
         return await _productRepository.GetByIdAsync(id);
     }
@@ -31,7 +45,7 @@ public class ProductService : IProductService
         return await _productRepository.GetProductHistoryAsync(id);
     }
 
-    public async Task<ProductEntity> CreateProductAsync(ProductEntity product)
+    public async Task<Product> CreateProductAsync(Product product)
     {
         var forbiddenPhrases = await _forbiddenPhraseRepository.GetAllForbiddenPhrasesAsync();
         var matchedForbiddenPhrases = forbiddenPhrases
@@ -57,7 +71,7 @@ public class ProductService : IProductService
         return await _productRepository.AddAsync(product);
     }
 
-    public async Task UpdateProductAsync(int id, ProductEntity product)
+    public async Task UpdateProductAsync(int id, Product product)
     {
         var existingProduct = await _productRepository.GetByIdAsync(id);
         if (existingProduct == null)
@@ -91,10 +105,10 @@ public class ProductService : IProductService
         await _productRepository.DeleteAsync(id);
     }
 
-    public bool Validate(ProductEntity productEntity, out List<string> errors)
+    public bool Validate(Product product, out List<string> errors)
     {
         errors = _specifications
-            .Where(spec => !spec.IsSatisfiedBy(productEntity))
+            .Where(spec => !spec.IsSatisfiedBy(product))
             .Select(spec => spec.ErrorMessage)
             .ToList();
 
