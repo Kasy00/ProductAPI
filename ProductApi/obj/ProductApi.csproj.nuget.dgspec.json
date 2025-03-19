@@ -1,25 +1,27 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\kam14\\OneDrive\\Desktop\\lab1-ztp\\ProductApi\\ProductApi.csproj": {}
+    "C:\\Users\\Dell\\Desktop\\ProductAPI\\ProductApi\\ProductApi.csproj": {}
   },
   "projects": {
-    "C:\\Users\\kam14\\OneDrive\\Desktop\\lab1-ztp\\ProductApi\\ProductApi.csproj": {
+    "C:\\Users\\Dell\\Desktop\\ProductAPI\\ProductApi\\ProductApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\kam14\\OneDrive\\Desktop\\lab1-ztp\\ProductApi\\ProductApi.csproj",
+        "projectUniqueName": "C:\\Users\\Dell\\Desktop\\ProductAPI\\ProductApi\\ProductApi.csproj",
         "projectName": "ProductApi",
-        "projectPath": "C:\\Users\\kam14\\OneDrive\\Desktop\\lab1-ztp\\ProductApi\\ProductApi.csproj",
-        "packagesPath": "C:\\Users\\kam14\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\kam14\\OneDrive\\Desktop\\lab1-ztp\\ProductApi\\obj\\",
+        "projectPath": "C:\\Users\\Dell\\Desktop\\ProductAPI\\ProductApi\\ProductApi.csproj",
+        "packagesPath": "C:\\Users\\Dell\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Dell\\Desktop\\ProductAPI\\ProductApi\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\kam14\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\Dell\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
