@@ -24,14 +24,19 @@ public class ProductService : IProductService
         {
             p.Id,
             p.Name,
-            p.Price
+            p.Description,
+            p.Category,
+            p.Price,
+            p.IsAvailable
         });
         
         return products.Select(p => new ProductDto
         {
             Id = p.Id,
             Name = p.Name,
-            Price = p.Price
+            Price = p.Price,
+            IsAvailable = p.IsAvailable,
+            Category = p.Category,
         });
     }
 
